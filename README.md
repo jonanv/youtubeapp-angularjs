@@ -66,11 +66,11 @@ or
 http-server -o
 ```
 
-[npm-badge]: https://img.shields.io/badge/npm-v6.14.4-brightgreen
+[npm-badge]: https://img.shields.io/badge/npm-v6.14.10-brightgreen
 [npm-url]: https://www.npmjs.com
-[node-badge]: https://img.shields.io/badge/nodejs-v12.16.1-brightgreen
+[node-badge]: https://img.shields.io/badge/nodejs-v14.15.4-brightgreen
 [node-url]: https://nodejs.org/download/release/v12.16.1/
-[angular-badge]: https://img.shields.io/badge/angular--CLI-v9.1.0-brightgreen
+[angular-badge]: https://img.shields.io/badge/angular--CLI-v10.0.1-brightgreen
 [angular-url]: https://angular.io/cli/
 [license-badge]: https://img.shields.io/badge/license-MIT-green.svg
 [license-url]: https://opensource.org/licenses/MIT
