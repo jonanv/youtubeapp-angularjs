@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Playlist } from '../interfaces/playlist.interface';
+import { Playlist, Item, Snippet } from '../interfaces/playlist.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class YoutubeService {
   private youtubeUrl: string = 'https://www.googleapis.com/youtube/v3/';
   private apiKey: string = 'AIzaSyDHhGSKVNc5A-LoHP57s_UnqdRt6fpbfmY';
   private playlistId: string = 'UUuaPTYj15JSkETGnEseaFFg';
-  private nextPageToken: string = 'CAoQAA';
+  private nextPageToken: string;
 
   private part: string = 'snippet';
   private maxResults: string = '10';
@@ -25,7 +25,7 @@ export class YoutubeService {
     private http: HttpClient
   ) { }
 
-  private getQuery(query: string): Observable<Object> {
+  private getQuery(query: string): Observable<Playlist> {
     const url = `${ this.youtubeUrl }${ query }`;
     const params =  new HttpParams()
       .set('part', this.part)
@@ -33,13 +33,21 @@ export class YoutubeService {
       .set('playlistId', this.playlistId)
       .set('key', this.apiKey);
 
-    return this.http.get(url, { params });
+    return this.http.get<Playlist>(url, { params });
   }
 
-  public getPlayListItems(): Observable<Playlist> {
+  public getPlaylistItems(): Observable<Snippet[]> {
     return this.getQuery('playlistItems')
-      .pipe(map((response: Playlist) => {
-        return response;
-      }));
+      .pipe(
+        map((response: Playlist) => {
+          this.nextPageToken = response.nextPageToken;
+          return response.items;
+        }),
+        map((items: Item[]) => {
+          return items.map(
+            (item: Item) => item.snippet
+          );
+        })
+      );
   }
 }

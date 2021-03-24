@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Imports
 import { first } from 'rxjs/operators';
 import { YoutubeService } from '../../services/youtube.service';
-import { Playlist } from '../../interfaces/playlist.interface';
+import { Playlist, Item, Snippet } from '../../interfaces/playlist.interface';
 
 @Component({
   selector: 'app-home',
@@ -17,13 +17,13 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getPlayListItems();
+    this.getPlaylistItems();
   }
 
-  private getPlayListItems(): void {
-    this.youtubeService.getPlayListItems()
+  private getPlaylistItems(): void {
+    this.youtubeService.getPlaylistItems()
       .pipe(first())
-      .subscribe((response: Playlist) => {
+      .subscribe((response: Snippet[]) => {
         console.log(response);
       }, (error) => {
         console.log(error);
