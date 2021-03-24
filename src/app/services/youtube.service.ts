@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Playlist } from '../interfaces/playlist.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +36,9 @@ export class YoutubeService {
     return this.http.get(url, { params });
   }
 
-  public getPlayListItems(): Observable<any> {
+  public getPlayListItems(): Observable<Playlist> {
     return this.getQuery('playlistItems')
-      .pipe(map((response: any) => {
+      .pipe(map((response: Playlist) => {
         return response;
       }));
   }

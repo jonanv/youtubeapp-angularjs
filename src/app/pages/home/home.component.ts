@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+// Imports
 import { first } from 'rxjs/operators';
 import { YoutubeService } from '../../services/youtube.service';
+import { Playlist } from '../../interfaces/playlist.interface';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +23,7 @@ export class HomeComponent implements OnInit {
   private getPlayListItems(): void {
     this.youtubeService.getPlayListItems()
       .pipe(first())
-      .subscribe((response: any) => {
+      .subscribe((response: Playlist) => {
         console.log(response);
       }, (error) => {
         console.log(error);
