@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { YoutubeService } from '../../services/youtube.service';
 import { Playlist, Item, Snippet } from '../../interfaces/playlist.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,29 @@ export class HomeComponent implements OnInit {
       }, (error) => {
         console.log(error);
       });
+  }
+
+  public showVideo(video: Snippet) {
+    console.log(video);
+    Swal.fire({
+      html: `
+        <h4>${ video.title }</h4>
+        <hr>
+        <iframe width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/${ video.resourceId.videoId }"
+                title="${ video.title }"
+                frameborder="0"
+                allow="accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      `
+    });
   }
 
 }

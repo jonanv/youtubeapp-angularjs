@@ -10,7 +10,8 @@
         <h5 class="card-title">{{ video.title }}</h5>
         <p class="card-text">{{ video.description }}</p>
         <p class="card-text"><small class="text-muted">{{ video.publishedAt | date }}</small></p>
-        <button class="btn btn-outline-primary btn-block">
+        <button class="btn btn-outline-primary btn-block"
+          (click)="showVideo(video)">
           Ver video
         </button>
       </div>
