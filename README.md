@@ -71,6 +71,15 @@ or
 ng g s services/youtube --skipTests
 ```
 
+# Create interface (add at at file name '.interface.ts')
+```javascript
+ng generate interface interfaces/playlist
+```
+or
+```javascript
+ng g i interfaces/playlist
+```
+
 # Server local
 install global ```sudo npm i -g http-server```
 
