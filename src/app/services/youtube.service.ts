@@ -14,10 +14,9 @@ export class YoutubeService {
   private youtubeUrl: string = 'https://www.googleapis.com/youtube/v3/';
   private apiKey: string = 'AIzaSyDHhGSKVNc5A-LoHP57s_UnqdRt6fpbfmY';
   private playlistId: string = 'UUuaPTYj15JSkETGnEseaFFg';
-  private nextPageToken: string;
-
   private part: string = 'snippet';
   private maxResults: string = '10';
+  private nextPageToken: string;
 
   //https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyDHhGSKVNc5A-LoHP57s_UnqdRt6fpbfmY&playlistId=UUuaPTYj15JSkETGnEseaFFg&maxResults=10&pageToken=CAoQAA
 

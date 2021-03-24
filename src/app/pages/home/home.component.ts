@@ -12,6 +12,8 @@ import { Playlist, Item, Snippet } from '../../interfaces/playlist.interface';
 })
 export class HomeComponent implements OnInit {
 
+  public videos: Snippet[] = [];
+
   constructor(
     private youtubeService: YoutubeService
   ) { }
@@ -24,7 +26,8 @@ export class HomeComponent implements OnInit {
     this.youtubeService.getPlaylistItems()
       .pipe(first())
       .subscribe((response: Snippet[]) => {
-        console.log(response);
+        this.videos.push(...response);
+        console.log(this.videos);
       }, (error) => {
         console.log(error);
       });
