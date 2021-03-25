@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  public showVideo(video: Snippet) {
+  public showVideo(video: Snippet): void {
     Swal.fire({
       html: `
         <h4>${ video.title }</h4>
