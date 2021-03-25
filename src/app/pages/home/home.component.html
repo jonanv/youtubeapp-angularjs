@@ -4,7 +4,7 @@
 <div class="card-columns">
 
   <ng-container *ngFor="let video of videos">
-    <div class="card">
+    <div class="card animate__animated animate__fadeIn">
       <img [src]="video.thumbnails.high.url" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ video.title }}</h5>
@@ -22,7 +22,8 @@
 
 <div class="row mt-5 mb-5 text-center">
   <div class="col">
-    <button class="btn btn-primary btn-lg">
+    <button class="btn btn-primary btn-lg"
+      (click)="getPlaylistItems()">
       Siguiente página
     </button>
   </div>

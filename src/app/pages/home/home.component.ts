@@ -23,19 +23,17 @@ export class HomeComponent implements OnInit {
     this.getPlaylistItems();
   }
 
-  private getPlaylistItems(): void {
+  public getPlaylistItems(): void {
     this.youtubeService.getPlaylistItems()
       .pipe(first())
       .subscribe((response: Snippet[]) => {
         this.videos.push(...response);
-        console.log(this.videos);
       }, (error) => {
         console.log(error);
       });
   }
 
   public showVideo(video: Snippet) {
-    console.log(video);
     Swal.fire({
       html: `
         <h4>${ video.title }</h4>

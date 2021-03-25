@@ -16,7 +16,7 @@ export class YoutubeService {
   private playlistId: string = 'UUuaPTYj15JSkETGnEseaFFg';
   private part: string = 'snippet';
   private maxResults: string = '10';
-  private nextPageToken: string;
+  private nextPageToken: string = '';
 
   //https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyDHhGSKVNc5A-LoHP57s_UnqdRt6fpbfmY&playlistId=UUuaPTYj15JSkETGnEseaFFg&maxResults=10&pageToken=CAoQAA
 
@@ -30,7 +30,8 @@ export class YoutubeService {
       .set('part', this.part)
       .set('maxResults', this.maxResults)
       .set('playlistId', this.playlistId)
-      .set('key', this.apiKey);
+      .set('key', this.apiKey)
+      .set('pageToken', this.nextPageToken);
 
     return this.http.get<Playlist>(url, { params });
   }
